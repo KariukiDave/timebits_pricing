@@ -34,6 +34,7 @@ html {
     height: 449px;
     width: calc(100vw - 1440px);
     background-color: rgb(241, 245, 254);
+    }
 }
 
 .title {
