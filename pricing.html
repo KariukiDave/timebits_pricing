@@ -37,10 +37,10 @@
     <ul>
       <li><span>Dedicated interface for time entry</span></li>
       <li><span>Enter tasks in a monday.com board</span></li>
-      <li><span>In-depth dashboards for time tracking reports</span></li>
+      <li><span>Detailed dashboards for timesheet reports</span></li>
     </ul>
 
-    <button>Start my trial</button>
+    <button>Start My Trial</button>
   </div>
 
 </div></div>
@@ -129,6 +129,14 @@ slider.addEventListener("mousedown", function () {
 });
 slider.addEventListener("mouseup", function () {
   slider.removeEventListener("mousemove", listener);
+});
+
+slider.addEventListener("touchstart", function () {
+  listener();
+  slider.addEventListener("touchmove", listener);
+});
+slider.addEventListener("touchend", function () {
+  slider.removeEventListener("touchmove", listener);
 });
 
 slider.addEventListener("keydown", listener);
