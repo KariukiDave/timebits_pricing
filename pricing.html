@@ -1,0 +1,146 @@
+<html>
+<head> <link rel="stylesheet" type="text/css" href="./style.css"></head>
+<body>
+  <div class="tbpricing">
+    <div class="title">
+  <h1>Simple, User-based pricing</h1>
+  <h3>Get Started with our 14-day trial.</h3>
+</div>
+
+<div class="container">
+  <div class="upper">
+    <div class="left">
+      <span id="pageviews"></span> Users
+    </div>
+    <div class="right">
+      <span class="price">$<span id="price">43.00</span></span> / <span id="period">month</span>
+    </div>
+  </div>
+
+  <div class="slider">
+    <input type="range" min="1" max="10" value="3" id="slider">
+  </div>
+
+  <div class="toggle-container">
+    Monthly Billing
+    <label class="switch">
+      <input type="checkbox" id="toggle" onclick="discount()">
+      <span class="slide round"></span>
+    </label>
+    <br class="show">
+
+    Yearly Billing
+    <span class="discount">15% <span class="hide">discount</span></span>
+  </div>
+
+  <div class="bottom">
+    <ul>
+      <li><span>Dedicated interface for time entry</span></li>
+      <li><span>Enter tasks in a monday.com board</span></li>
+      <li><span>In-depth dashboards for time tracking reports</span></li>
+    </ul>
+
+    <button>Start my trial</button>
+  </div>
+
+</div></div>
+</body>
+
+<script>let slider = document.getElementById("slider");
+let price = document.getElementById("price");
+let pageviews = document.getElementById("pageviews");
+
+let toggle = document.getElementById("toggle");
+let text = document.getElementById("period");
+
+const DISCOUNT = 0;
+
+var prices = [15, 29, 43, 57, 72, 108, 135, 255, 510, 1275];
+
+pageviews.innerHTML = "Up To 15";
+
+function discount() {
+  text.innerHTML = "";
+
+  if (toggle.checked) {
+    text.innerHTML = "year";
+    for (let i = 0; i < prices.length; i++) {
+      prices[i] = (prices[i] * 12) - (prices[i] * DISCOUNT);
+    }
+    listener();
+  } else {
+    text.innerHTML = "month";
+    prices = [15, 29, 43, 57, 72, 108, 135, 255, 510, 1275];
+    listener();
+  }
+}
+
+var listener = function () {
+  window.requestAnimationFrame(function () {
+    switch (slider.value) {
+      case "1":
+        price.innerHTML = Number(prices[0]).toFixed(2);
+        pageviews.innerHTML = "Up To 5";
+        break;
+      case "2":
+        price.innerHTML = Number(prices[1]).toFixed(2);
+        pageviews.innerHTML = "Up To 10";
+        break;
+      case "3":
+        price.innerHTML = Number(prices[2]).toFixed(2);
+        pageviews.innerHTML = "Up To 15";
+        break;
+      case "4":
+        price.innerHTML = Number(prices[3]).toFixed(2);
+        pageviews.innerHTML = "Up To 20";
+        break;
+      case "5":
+        price.innerHTML = Number(prices[4]).toFixed(2);
+        pageviews.innerHTML = "Up To 30";
+        break;
+      case "6":
+        price.innerHTML = Number(prices[5]).toFixed(2);
+        pageviews.innerHTML = "Up To 40";
+        break;
+      case "7":
+        price.innerHTML = Number(prices[6]).toFixed(2);
+        pageviews.innerHTML = "Up To 50";
+        break;
+      case "8":
+        price.innerHTML = Number(prices[7]).toFixed(2);
+        pageviews.innerHTML = "Up To 100";
+        break;
+      case "9":
+        price.innerHTML = Number(prices[8]).toFixed(2);
+        pageviews.innerHTML = "Up To 200";
+        break;
+      case "10":
+        price.innerHTML = Number(prices[9]).toFixed(2);
+        pageviews.innerHTML = "Up To 500";
+        break;
+
+    }
+  });
+};
+
+slider.addEventListener("mousedown", function () {
+  listener();
+  slider.addEventListener("mousemove", listener);
+});
+slider.addEventListener("mouseup", function () {
+  slider.removeEventListener("mousemove", listener);
+});
+
+slider.addEventListener("keydown", listener);
+
+slider.oninput = function () {
+  var value = ((this.value - this.min) / (this.max - this.min)) * 100;
+  this.style.background =
+    "linear-gradient(to right, #ED5D2B 0%, #ED5D2B " +
+    value +
+    "%, #eaeefb " +
+    value +
+    "%, #eaeefb 100%)";
+};
+</script>
+</html>

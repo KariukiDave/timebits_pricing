@@ -1,0 +1,308 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.tbpricing {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  height: 100vh;
+  min-height: 100%;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  background: url(https://raw.githubusercontent.com/milenig/fend-mentor_pricing-component/3ccfd6b18e87377a950915288ef64c896969bf62/images/bg-pattern.svg)
+    hsl(230, 100%, 99%) top left no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: hsl(227, 35%, 25%);
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 1440px;
+    height: 449px;
+    width: calc(100vw - 1440px);
+    background-color: rgb(241, 245, 254);
+  }
+}
+
+.title {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url(https://raw.githubusercontent.com/milenig/fend-mentor_pricing-component/3ccfd6b18e87377a950915288ef64c896969bf62/images/pattern-circles.svg)
+    center no-repeat;
+  background-size: contain;
+
+  .hide {
+    display: none;
+  }
+
+  h1 {
+    margin: 0.3em;
+    color: #080345;
+  }
+
+  h3 {
+    font-size: 1.1em;
+    color: hsl(225, 20%, 60%);
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
+.container {
+  background-color: white;
+  border-radius: 8px;
+  margin: 50px 0 10px;
+  box-shadow: 0px 0px 20px 0px rgba(133, 143, 173, 0.1);
+  position: relative;
+
+  .upper {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    color: hsl(225, 20%, 60%);
+    font-weight: 800;
+
+    .left {
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .right {
+      align-items: center;
+      display: flex;
+
+      .price {
+        color: #080345;
+        font-size: 2.7em;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .toggle-container {
+    text-align: right;
+    color: hsl(225, 20%, 60%);
+    font-size: 0.95em;
+
+    padding: 40px;
+
+    .show {
+      display: none;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 38px;
+      height: 20px;
+      margin: 0 15px;
+
+      .slide {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: hsl(223, 50%, 87%);
+        transition: 0.2s;
+        &:hover {
+          background-color: hsl(15, 84%, 55%);
+        }
+
+        &:before {
+          position: absolute;
+          content: "";
+          height: 14px;
+          width: 14px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+        }
+
+        &.round {
+          border-radius: 34px;
+        }
+
+        &.round:before {
+          border-radius: 50%;
+        }
+      }
+
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      input:checked + .slide {
+        background-color: hsl(15, 84%, 55%);
+      }
+
+      input:focus + .slide {
+        box-shadow: 0 0 1px hsl(174, 86%, 45%);
+      }
+
+      input:checked + .slide:before {
+        transform: translateX(18px);
+      }
+    }
+
+    .discount {
+      background-color: hsl(14, 92%, 95%);
+      color: hsl(15, 100%, 70%);
+      font-size: 0.85em;
+      padding: 1px 8px;
+      border-radius: 15px;
+      margin-left: 6px;
+    }
+  }
+
+  .bottom {
+    padding: 20px 40px 20px 20px;
+    border-top: 2px solid rgba(133, 143, 173, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      li {
+        color: #080345;
+        margin: 10px 0;
+        list-style-image: url(https://raw.githubusercontent.com/milenig/fend-mentor_pricing-component/3ccfd6b18e87377a950915288ef64c896969bf62/images/icon-check.svg);
+        span {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    button {
+      padding: 0;
+      border: none;
+      margin-left: 50px;
+      outline: none;
+      font: inherit;
+      font-weight: 600;
+      color: inherit;
+      background: none;
+      background-color: hsl(15, 84%, 55%);
+      color: hsl(0, 0%, 100%);
+      padding: 15px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+.slider {
+  width: 600px;
+  padding: 0 40px;
+
+  input {
+    background: linear-gradient(
+      to right,
+      #ED5D2B 0%,
+      #ED5D2B 25%,
+      #eaeefb 25%,
+      #eaeefb 100%
+    );
+    border-radius: 8px;
+    height: 8px;
+    width: 100%;
+    border-radius: 4px;
+    outline: none;
+    transition: all 450ms ease-in;
+    -webkit-appearance: none;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: url(https://raw.githubusercontent.com/milenig/fend-mentor_pricing-component/3ccfd6b18e87377a950915288ef64c896969bf62/images/icon-slider.svg)
+        rgb(237, 93, 43) center no-repeat;
+      box-shadow: 0px 10px 20px 0px rgba(237, 93, 43, 0.7);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+      &:hover {
+        background: url(https://raw.githubusercontent.com/milenig/fend-mentor_pricing-component/3ccfd6b18e87377a950915288ef64c896969bf62/images/icon-slider.svg)
+          rgb(27, 230, 209) center no-repeat;
+      }
+      &:active {
+        cursor: grabbing;
+        background: url(https://raw.githubusercontent.com/milenig/fend-mentor_pricing-component/3ccfd6b18e87377a950915288ef64c896969bf62/images/icon-slider.svg)
+          rgb(13, 190, 173) center no-repeat;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .title {
+    text-align: center;
+    .hide {
+      display: block;
+    }
+  }
+
+  .container .upper {
+    flex-direction: column;
+  }
+
+  .container .slider {
+    width: 100%;
+  }
+
+  .discount {
+    .hide {
+      display: none;
+    }
+  }
+
+  .bottom {
+    flex-direction: column;
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+    button {
+      width: 200px;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .container .toggle-container {
+    text-align: center;
+    .show {
+      display: block;
+    }
+  }
+}
